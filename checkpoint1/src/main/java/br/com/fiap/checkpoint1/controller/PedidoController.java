@@ -2,18 +2,18 @@ package br.com.fiap.checkpoint1.controller;
 
 import br.com.fiap.checkpoint1.model.Pedido;
 import br.com.fiap.checkpoint1.service.PedidoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/pedidos")
 public class PedidoController {
+    private final PedidoService service;
 
-    @Autowired
-    private PedidoService service;
+    public PedidoController(PedidoService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public List<Pedido> listarPedidos() {
@@ -21,13 +21,13 @@ public class PedidoController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Pedido> buscarPedido(@PathVariable Long id) {
-        return service.buscarPedidoPorId(id);
+    public Pedido buscarPedido(@PathVariable Long id) {
+        return service.buscarPedido(id);
     }
 
     @PostMapping
-    public Pedido criarPedido(@RequestBody Pedido pedido) {
-        return service.salvarPedido(pedido);
+    public Pedido criarPedido(@RequestBogitdy Pedido pedido) {
+        return service.criarPedido(pedido);
     }
 
     @PutMapping("/{id}")

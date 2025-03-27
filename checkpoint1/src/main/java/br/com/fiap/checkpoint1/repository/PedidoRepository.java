@@ -1,7 +1,7 @@
 package br.com.fiap.checkpoint1.repository;
 
-import br.com.fiap.checkpoint1.model.Pedido;
 import org.springframework.data.jpa.repository.JpaRepository;
+import br.com.fiap.checkpoint1.model.Pedido;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 }

@@ -4,10 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
 
-@Data
 @Entity
+@Data
 public class Pedido {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,15 +14,9 @@ public class Pedido {
     @Column(nullable = false)
     private String clienteNome;
 
+    @Column(nullable = false)
     private LocalDate dataPedido = LocalDate.now();
 
     @Column(nullable = false)
     private double valorTotal;
-
-    public void setValorTotal(double valorTotal) {
-        if (valorTotal < 0) {
-            throw new IllegalArgumentException("O valor total não pode ser negativo.");
-        }
-        this.valorTotal = valorTotal;
-    }
 }
